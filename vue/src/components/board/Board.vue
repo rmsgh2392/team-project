@@ -13,7 +13,7 @@
                 prepend-icon="mdi-magnify"
                 :style="{display:'flex',alignItems:'center'}"
               />
-              <v-btn text router-link to="/profile" :style="{display:'flex',alignItems:'center'}">
+              <v-btn  text router-link to="/profile" :style="{display:'flex',alignItems:'center'}">
                 <div>프로필</div>
               </v-btn>
               <v-btn text router-link to="/postCard" :style="{display:'flex',alignItems:'center'}">
@@ -39,7 +39,6 @@
     </v-app>
   </div>
 </template>
-
 <script>
 export default {
   name: "App",

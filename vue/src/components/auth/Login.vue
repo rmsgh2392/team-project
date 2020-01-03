@@ -3,11 +3,11 @@
     <div class="login-box">
         <img src="@/assets/img/profile.png" class="avatar">
         <h1>헬창의 길</h1>
-        <form>
+        <form method="post" @submit.prevent="login(userid, passwd)">
             <p>사용자 ID</p>
-            <input type="text" name="username" placeholder="Enter UserID">
+            <input v-model="userid" type="text" name="username" placeholder="Enter UserID">
             <p>비밀번호</p>
-            <input type="password" name="password" placeholder="Enter Password">
+            <input v-model="passwd" type="password" name="password" placeholder="Enter Password">
             <input type="submit" name="submit" value="Login">
             <a href="#">비밀번호를 잊으셨나요?</a>
             <div class="text-center small">Don't have an account?<router-link to="/join">Sign up</router-link></div>
@@ -17,7 +17,24 @@
 </template>
 <script>
 export default{
-
+    name : 'login',
+    data(){
+        return {
+            ctx : this.$store.state.common.context,
+            msg : this.$store.state.common.errorState
+        }
+    },
+    methods : {
+        login(userid, passwd){
+            alert('로그인 ㄱㄱ')
+            this.$store.dispatch('customer/login',{userid : userid, passwd : passwd, context : this.ctx})
+            .then(()=>this.move())
+            .catch(({message})=>this.msg = message)
+        },
+        move(){
+            this.$router.push({path : '/mypage'})
+        }
+    }
 }
 </script>
 <style scoped>
